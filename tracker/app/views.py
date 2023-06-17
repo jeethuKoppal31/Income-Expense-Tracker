@@ -27,6 +27,41 @@ def SignupPage(request):
 
     return render (request,'signup.html')
 
+
+def home(request):
+    if request.method == 'POST':
+        form = EntryForm(request.POST)
+        if form.is_valid():
+            entry = form.save(commit=False)
+            entry.user = request.user
+            entry.save()
+            return redirect('entry_list')  # Redirect to the entry list page
+    else:
+        form = EntryForm()
+    return render(request, 'home', {'form': form})
+
+def create_entry(request):
+    if request.method == 'POST':
+        description = request.POST.get('description')
+        amount = request.POST.get('amount')
+        entry_type = request.POST.get('entry_type')
+
+        # Create and save the entry
+        entry = Entry(description=description, amount=amount, entry_type=entry_type)
+
+        
+        
+        entry.created_at = timezone.now()
+        entry.save()
+        return redirect('entry_list')
+
+    return render(request, 'create_entry.html')
+
+def entry_list(request):
+    entries = Entry.objects.all()
+    return render(request, 'entry_list.html', {'entries': entries})  
+
+
 def LoginPage(request):
     if request.method=='POST':
         username=request.POST.get('username')

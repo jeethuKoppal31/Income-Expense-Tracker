@@ -16,13 +16,15 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from app import views
+from app.views import entry_list,create_entry
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.SignupPage,name='signup'),
     path('login/',views.LoginPage,name='login'),
     path('home/',views.HomePage,name='home'),
     path('logout/',views.LogoutPage,name='logout'),
-
+    path('create_entry/', create_entry, name='create_entry'),
+    path('entry_list/', entry_list, name='entry_list'),
 
     
 ]

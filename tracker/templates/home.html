@@ -11,7 +11,25 @@
     <title>Home Page</title>
   </head>
   <body>
-    <h1><center>Login Succes</h1>
+    <form method="post">
+  {% csrf_token %}
+  <label for="description">Description:</label>
+  <input type="text" id="description" name="description" required>
+  <br>
+  <label for="amount">Amount:</label>
+  <input type="number" id="amount" name="amount" required>
+  <br>
+  <label for="entry_type">Entry Type:</label>
+  <input type="radio" id="income" name="entry_type" value="income" checked>
+  <label for="income">Income</label>
+  <input type="radio" id="expense" name="entry_type" value="expense">
+  <label for="expense">Expense</label>
+  <br>
+  <input type="submit" value="Create Entry">
+  <a href="{% url 'entry_list' %}" class="btn btn-primary">View Entry List</a>
+
+</form>
+
     <a href="{% url 'logout' %}" class="btn btn-primary"><center>Logout</a>
 
     
