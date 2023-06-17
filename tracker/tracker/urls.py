@@ -16,7 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from app import views
+
 from app.views import entry_list,create_entry
+from app.views import entry_edit_view
+from app.views import entry_delete_view
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.SignupPage,name='signup'),
@@ -25,6 +28,8 @@ urlpatterns = [
     path('logout/',views.LogoutPage,name='logout'),
     path('create_entry/', create_entry, name='create_entry'),
     path('entry_list/', entry_list, name='entry_list'),
+    path('edit_entry/<int:pk>/', entry_edit_view, name='edit_entry'),
+    path('delete_entry/<int:pk>/', entry_delete_view, name='delete_entry'),
 
-    
+
 ]

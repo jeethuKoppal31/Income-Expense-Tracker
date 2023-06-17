@@ -1,0 +1,5 @@
+<p>Are you sure you want to delete the entry "{{ entry.description }}"?</p>
+<form method="post">
+  {% csrf_token %}
+  <input type="submit" value="Delete">
+</form>
