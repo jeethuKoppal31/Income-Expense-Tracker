@@ -1,0 +1,7 @@
+{% for entry in entries %}
+<p>Description: {{ entry.description }}</p>
+<p>Amount: {{ entry.amount }}</p>
+<p>Entry Type: {{ entry.entry_type }}</p>
+<hr> {% empty %}
+<p>No entries found.</p>
+{% endfor %}
