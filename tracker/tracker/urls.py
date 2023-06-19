@@ -23,11 +23,11 @@ from app.views import entry_delete_view
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.SignupPage,name='signup'),
-    path('login/',views.LoginPage,name='login'),
-    path('home/',views.HomePage,name='home'),
-    path('logout/',views.LogoutPage,name='logout'),
-    path('create_entry/', create_entry, name='create_entry'),
-    path('entry_list/', entry_list, name='entry_list'),
+    path('login',views.LoginPage,name='login'),
+    path('home',views.home,name='home'),
+    path('logout',views.LogoutPage,name='logout'),
+    path('create_entry', create_entry, name='create_entry'),
+    path('entry_list', entry_list, name='entry_list'),
     path('edit_entry/<int:pk>/', entry_edit_view, name='edit_entry'),
     path('delete_entry/<int:pk>/', entry_delete_view, name='delete_entry'),
 
